@@ -1,7 +1,7 @@
 Summary:	Automount utilities including an updated version of Amd
 Summary(pl):	Narzêdzia do automatycznego montowania systemów plików
 Name:		am-utils
-Version:	6.0.3
+Version:	6.0.7
 Release:	1
 License:	BSD
 Group:		Daemons
@@ -14,6 +14,7 @@ Source3:	%{name}.sysconf
 Patch0:		%{name}-6.0a16-linux.patch
 Patch1:		%{name}-6.0a16-alpha.patch
 Patch2:		%{name}-6.0a16-glibc21.patch
+URL:		http://www.am-utils.org/
 BuildRequires:	autoconf
 Prereq:		/sbin/chkconfig
 Requires:	portmap
@@ -41,18 +42,14 @@ urz±dzenia.
 
 %prep
 %setup -q
-%patch2 -p1
 %patch0 -p1
 %ifnarch i386
 %patch1 -p1
 %endif
 
 %build
-(cd aux
-autoconf
-mv -f configure ..
-)
-CFLAGS="%{rpmcflags}" ./configure \
+CFLAGS="%{rpmcflags}" 
+%configure2_13 \
 	--prefix=%{_prefix} \
 	--enable-shared \
 	--sysconfdir=%{_sysconfdir} \
@@ -66,19 +63,15 @@ touch `find -name Makefile.in`
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/{sysconfig,rc.d/init.d}
 
-%{__make} install prefix=$RPM_BUILD_ROOT%{_prefix} sysconfdir=`pwd`%{_sysconfdir}
-install $RPM_SOURCE_DIR/am-utils.conf $RPM_BUILD_ROOT%{_sysconfdir}/amd.conf
-install $RPM_SOURCE_DIR/am-utils.sysconf $RPM_BUILD_ROOT/etc/sysconfig/amd
-install $RPM_SOURCE_DIR/am-utils.init $RPM_BUILD_ROOT/etc/rc.d/init.d/amd
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf AUTHORS TODO BUGS NEWS README* ChangeLog
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/amd
+install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/amd.conf
+install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/amd
 
 install -d $RPM_BUILD_ROOT/.automount
 
-# get rid of some lame scripts
-file $RPM_BUILD_ROOT%{_sbindir}/* | \
-	grep -v ELF | grep -v am-eject | \
-	cut -f 1 -d':' | xargs rm -f
+gzip -9nf AUTHORS BUGS NEWS README* ChangeLog ldap-id.txt
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -97,7 +90,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc doc/*.ps {AUTHORS,BUGS,ChangeLog,NEWS,README*,TODO}.gz
+%doc doc/*.ps *.gz
 %dir /.automount
 %config %{_sysconfdir}/amd.conf
 %config /etc/sysconfig/amd
