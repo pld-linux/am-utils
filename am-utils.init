@@ -1,33 +1,28 @@
 #!/bin/sh
 #
-# Version: 1.2
-#
-# chkconfig: 345 72 28
-# description: Runs the automount daemon that mounts devices and NFS hosts \
-#	       on demand.
-# processname: amd
-# config: /etc/amd.conf
-#
+# chkconfig:	345 72 28
+# description:	Runs the automount daemon that mounts devices and NFS hosts \
+#		on demand.
+# processname:	amd
+# config:	/etc/amd.conf
 
 # Source function library.
 . /etc/rc.d/init.d/functions
 
+# Demon specified configuration.
 . /etc/sysconfig/amd
 
 # See how we were called.
 case "$1" in
   start)
-	echo -n "Starting amd: "
-	touch /var/lock/subsys/amd
+	msg_starting amd
 	daemon /usr/sbin/amd -a $ADIR -l syslog $AMDOPTS -c 1000 $MOUNTPTS
-	echo
-	
+	touch /var/lock/subsys/amd
 	;;
   stop)
-	echo -n "Shutting down amd: "
+	msg_stopping amd
 	killproc amd
 	rm -f /var/lock/subsys/amd
-	echo
 	;;
   status)
 	status amd
@@ -40,7 +35,7 @@ case "$1" in
 	killall -HUP amd
 	;;
   *)
-	echo "Usage: amd {start|stop|status|restart|reload}"
+	msg_Usage "$0 {start|stop|status|restart|reload}"
 	exit 1
 esac
 
