@@ -92,7 +92,7 @@ fi
 %dir /.automount
 %config /etc/amd.conf
 %config /etc/sysconfig/amd
-%config /etc/rc.d/init.d/amd
+%attr(754,root,root) /etc/rc.d/init.d/amd
 %attr(755,root,root) %{_bindir}/pawd
 %attr(755,root,root) %{_sbindir}/*
 %attr(755,root,root) %{_libdir}/*
