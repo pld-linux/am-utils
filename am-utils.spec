@@ -1,9 +1,11 @@
-Summary:	Automount utilities including an updated version of Amd.
+Summary:	Automount utilities including an updated version of Amd
+Summary(pl):	Narzêdzia do automatycznego montowania systemów plików
 Name:		am-utils
 Version:	6.0.3
 Release:	1
 License:	BSD
 Group:		Daemons
+Group(de):	Server
 Group(pl):	Serwery
 Source0:	ftp://shekel.mcl.cs.columbia.edu/pub/am-utils/%{name}-%{version}.tar.gz
 Source1:	%{name}.init
@@ -38,7 +40,7 @@ mounting and unmounting filesystems.
 
 %build
 cd aux ; autoconf ; mv -f configure .. ; cd ..
-CFLAGS="$RPM_OPT_FLAGS" ./configure \
+CFLAGS="%{rpmcflags}" ./configure \
 	--prefix=%{_prefix} \
 	--enable-shared \
 	--sysconfdir=%{_sysconfdir} \
@@ -57,11 +59,7 @@ install $RPM_SOURCE_DIR/am-utils.conf $RPM_BUILD_ROOT%{_sysconfdir}/amd.conf
 install $RPM_SOURCE_DIR/am-utils.sysconf $RPM_BUILD_ROOT/etc/sysconfig/amd
 install $RPM_SOURCE_DIR/am-utils.init $RPM_BUILD_ROOT/etc/rc.d/init.d/amd
 
-strip $RPM_BUILD_ROOT%{_sbindir}/* $RPM_BUILD_ROOT%{_bindir}/*
-
-gzip -9nf AUTHORS TODO BUGS NEWS README* ChangeLog \
-	$RPM_BUILD_ROOT%{_mandir}/*
-	$RPM_BUILD_ROOT%{_infodir}/*
+gzip -9nf AUTHORS TODO BUGS NEWS README* ChangeLog
 
 install -d $RPM_BUILD_ROOT/.automount
 
