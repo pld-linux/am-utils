@@ -86,7 +86,7 @@ touch `find -name Makefile.in`
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/{sysconfig,rc.d/init.d} \
+install -d $RPM_BUILD_ROOT/etc/{sysconfig,rc.d/init.d} \
 	$RPM_BUILD_ROOT/.automount
 
 %{__make} install \
@@ -125,8 +125,8 @@ fi
 %defattr(644,root,root,755)
 %doc doc/*.ps AUTHORS BUGS NEWS README* ChangeLog ldap-id.txt
 %dir /.automount
-%config %{_sysconfdir}/amd.conf
-%config /etc/sysconfig/amd
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/amd.conf
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/amd
 %attr(754,root,root) /etc/rc.d/init.d/amd
 %attr(755,root,root) %{_bindir}/pawd
 %attr(755,root,root) %{_sbindir}/*
