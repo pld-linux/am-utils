@@ -73,15 +73,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/ldconfig
-/sbin/chkconfig --add amd
-[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+NAME=amd; %chkconfig_post
+%fix_info_dir
+
+%preun
+NAME=amd; %chkconfig_preun
 
 %postun
-[ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+%fix_info_dir
 /sbin/ldconfig
-if [ $1 = 0 ]; then
-    /sbin/chkconfig --del amd
-fi
 
 %files
 %defattr(644,root,root,755)
