@@ -4,7 +4,7 @@ Summary(pl):	Narzêdzia do automatycznego montowania systemów plików
 Summary(pt_BR):	Utilitários do automount - inclui o servidor automount NFS
 Name:		am-utils
 Version:	6.0.7
-Release:	2
+Release:	3
 Epoch:		5
 License:	BSD
 Group:		Daemons
@@ -123,4 +123,4 @@ fi
 %attr(755,root,root) %{_sbindir}/*
 %attr(755,root,root) %{_libdir}/*
 %{_mandir}/man[158]/*
-%{_infodir}/*
+%{_infodir}/am-utils.info*
