@@ -107,7 +107,7 @@ else
 	echo "Run \"/etc/rc.d/init.d/amd start\" to start amd service." >&2
 fi
 
-%preun -n drbdsetup
+%preun
 if [ "$1" = "0" ]; then
 	if [ -f /var/lock/subsys/amd ]; then
 		/etc/rc.d/init.d/amd stop
