@@ -85,7 +85,8 @@ touch `find -name Makefile.in`
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/{sysconfig,rc.d/init.d}
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/{sysconfig,rc.d/init.d} \
+	$RPM_BUILD_ROOT/.automount
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
@@ -93,28 +94,34 @@ install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/amd
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/amd.conf
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/amd
 
-install -d $RPM_BUILD_ROOT/.automount
-
-gzip -9nf AUTHORS BUGS NEWS README* ChangeLog ldap-id.txt
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/ldconfig
-/sbin/chkconfig --add amd
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+/sbin/chkconfig --add amd
+if [ -f /var/lock/subsys/drbd ]; then
+	/etc/rc.d/init.d/amd restart >&2
+else
+	echo "Run \"/etc/rc.d/init.d/amd start\" to start amd service." >&2
+fi
+
+%preun -n drbdsetup
+if [ "$1" = "0" ]; then
+	if [ -f /var/lock/subsys/amd ]; then
+		/etc/rc.d/init.d/amd stop
+	fi
+	/sbin/chkconfig --del amd
+fi
 
 %postun
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 /sbin/ldconfig
-if [ "$1" = "0" ]; then
-    /sbin/chkconfig --del amd
-fi
 
 %files
 %defattr(644,root,root,755)
-%doc doc/*.ps *.gz
+%doc doc/*.ps AUTHORS BUGS NEWS README* ChangeLog ldap-id.txt
 %dir /.automount
 %config %{_sysconfdir}/amd.conf
 %config /etc/sysconfig/amd
