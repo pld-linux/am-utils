@@ -19,8 +19,8 @@ URL:		http://www.am-utils.org/
 BuildRequires:	autoconf
 Prereq:		/sbin/chkconfig
 Requires:	portmap
-Obsoletes:	amd
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	amd
 
 %description
 Am-utils includes an updated version of Amd, the popular BSD
@@ -89,7 +89,8 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/{sysconfig,rc.d/init.d} \
 	$RPM_BUILD_ROOT/.automount
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/amd
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/amd.conf
