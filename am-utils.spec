@@ -12,10 +12,10 @@ Source3: am-utils.sysconf
 Patch0: am-utils-6.0a16-linux.patch
 Patch1: am-utils-6.0a16-alpha.patch
 Patch2: am-utils-6.0a16-glibc21.patch
-Prereq: /sbin/install-info
 Requires: portmap
 BuildRoot: /var/tmp/am-utils-root
 Prereq: /sbin/chkconfig
+Prereq:         /usr/sbin/fix-info-dir
 Obsoletes: amd
 
 %description
@@ -66,12 +66,10 @@ rm -rf $RPM_BUILD_ROOT
 %post
 /sbin/ldconfig
 /sbin/chkconfig --add amd
-/sbin/install-info /usr/info/am-utils.info.gz /usr/info/dir
+/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %preun
-if [ $1 = 0 ]; then
-   /sbin/install-info --delete /usr/info/am-utils.info.gz /usr/info/dir
-fi
+/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %postun
 /sbin/ldconfig
