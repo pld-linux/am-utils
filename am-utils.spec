@@ -2,7 +2,8 @@ Summary:	Automount utilities including an updated version of Amd
 Summary(pl):	Narzêdzia do automatycznego montowania systemów plików
 Name:		am-utils
 Version:	6.0.7
-Release:	1
+Release:	2
+Epoch:		5
 License:	BSD
 Group:		Daemons
 Group(de):	Server
