@@ -34,7 +34,7 @@ You should install am-utils if you need a program for automatically
 mounting and unmounting filesystems.
 
 %description -l es
-am-utils es la "próxima generación" del popular automounter BSD amd.
+Am-utils es la "próxima generación" del popular automounter BSD Amd.
 Incluye muchas adiciones: actualizaciones, portes, programas,
 características, correcciones de problemas, etc. AMD es el servidor
 automount de Berkeley. Tiene la capacidad de automáticamente montar
