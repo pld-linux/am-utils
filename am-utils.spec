@@ -2,7 +2,7 @@ Summary: Automount utilities including an updated version of Amd.
 Name: am-utils
 Version: 6.0
 Serial: 1
-Release: 3
+Release: 4
 Copyright: BSD
 Group: System Environment/Daemons
 Source: ftp://shekel.mcl.cs.columbia.edu/pub/am-utils/am-utils-%{version}.tar.gz
@@ -68,10 +68,8 @@ rm -rf $RPM_BUILD_ROOT
 /sbin/chkconfig --add amd
 /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
-%preun
-/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
-
 %postun
+/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 /sbin/ldconfig
 if [ $1 = 0 ]; then
     /sbin/chkconfig --del amd
