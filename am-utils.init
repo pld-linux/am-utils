@@ -35,7 +35,7 @@ case "$1" in
 	killall -HUP amd
 	;;
   *)
-	msg_Usage "$0 {start|stop|status|restart|reload}"
+	msg_usage "$0 {start|stop|status|restart|reload}"
 	exit 1
 esac
 
