@@ -1,22 +1,22 @@
-Summary: Automount utilities including an updated version of Amd.
-Name: am-utils
-Version: 6.0
-Serial: 1
-Release: 4
-Copyright: BSD
-Group: System Environment/Daemons
-Source: ftp://shekel.mcl.cs.columbia.edu/pub/am-utils/am-utils-%{version}.tar.gz
-Source1: am-utils.init
-Source2: am-utils.conf
-Source3: am-utils.sysconf
-Patch0: am-utils-6.0a16-linux.patch
-Patch1: am-utils-6.0a16-alpha.patch
-Patch2: am-utils-6.0a16-glibc21.patch
-Requires: portmap
-BuildRoot: /var/tmp/am-utils-root
-Prereq: /sbin/chkconfig
-Prereq:         /usr/sbin/fix-info-dir
-Obsoletes: amd
+Summary:	Automount utilities including an updated version of Amd.
+Name:		am-utils
+Version:	6.0
+Release:	5
+Copyright:	BSD
+Group:		Daemons
+Group(pl):	Serwery
+Source:		ftp://shekel.mcl.cs.columbia.edu/pub/am-utils/%{name}-%{version}.tar.gz
+Source1:	am-utils.init
+Source2:	am-utils.conf
+Source3:	am-utils.sysconf
+Patch0:		am-utils-6.0a16-linux.patch
+Patch1:		am-utils-6.0a16-alpha.patch
+Patch2:		am-utils-6.0a16-glibc21.patch
+Requires:	portmap
+Prereq:		/sbin/chkconfig
+Prereq:	        /usr/sbin/fix-info-dir
+Obsoletes:	amd
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
 Am-utils includes an updated version of Amd, the popular BSD
@@ -39,22 +39,33 @@ mounting and unmounting filesystems.
 
 %build
 cd aux ; autoconf ; mv -f configure .. ; cd ..
-CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=/usr \
-	--enable-shared --sysconfdir=/etc --enable-libs=-lnsl
+CFLAGS="$RPM_OPT_FLAGS" ./configure \
+	--prefix=%{_prefix} \
+	--enable-shared \
+	--sysconfdir=/etc \
+	--enable-libs=-lnsl
+	
 # fun with autoconf
 touch `find -name Makefile.in`
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install prefix=$RPM_BUILD_ROOT/usr sysconfdir=`pwd`/etc
-mkdir -p $RPM_BUILD_ROOT/etc/{sysconfig,rc.d/init.d}
-install -m 600 $RPM_SOURCE_DIR/am-utils.conf $RPM_BUILD_ROOT/etc/amd.conf
-install -m 755 $RPM_SOURCE_DIR/am-utils.sysconf $RPM_BUILD_ROOT/etc/sysconfig/amd
-install -m 755 $RPM_SOURCE_DIR/am-utils.init $RPM_BUILD_ROOT/etc/rc.d/init.d/amd
-strip $RPM_BUILD_ROOT/usr/sbin/* $RPM_BUILD_ROOT/usr/bin/* || :
-gzip -q9f $RPM_BUILD_ROOT/usr/info/*info*
-mkdir -p $RPM_BUILD_ROOT/.automount
+install -d $RPM_BUILD_ROOT/etc/{sysconfig,rc.d/init.d}
+
+make install prefix=$RPM_BUILD_ROOT%{_prefix} sysconfdir=`pwd`/etc
+install $RPM_SOURCE_DIR/am-utils.conf $RPM_BUILD_ROOT/etc/amd.conf
+install $RPM_SOURCE_DIR/am-utils.sysconf $RPM_BUILD_ROOT/etc/sysconfig/amd
+install $RPM_SOURCE_DIR/am-utils.init $RPM_BUILD_ROOT/etc/rc.d/init.d/amd
+
+strip $RPM_BUILD_ROOT%{_sbindir}/* $RPM_BUILD_ROOT%{_bindir}/*
+
+gzip -9nf AUTHORS TODO BUGS NEWS README* ChangeLog \
+	$RPM_BUILD_ROOT%{_mandir}/*
+	$RPM_BUILD_ROOT%{_infodir}/*
+
+install -d $RPM_BUILD_ROOT/.automount
+
 # get rid of some lame scripts
 file $RPM_BUILD_ROOT/usr/sbin/* | \
 	grep -v ELF | grep -v am-eject | \
@@ -76,16 +87,14 @@ if [ $1 = 0 ]; then
 fi
 
 %files
-%defattr(-,root,root)
-%doc doc/*.ps AUTHORS BUGS ChangeLog NEWS README* TODO
+%defattr(644,root,root,755)
+%doc doc/*.ps {AUTHORS,BUGS,ChangeLog,NEWS,README*,TODO}.gz
 %dir /.automount
-/usr/bin/pawd
-/usr/sbin/*
-/usr/man/man[58]/*
-/usr/man/man1/pawd.1
 %config /etc/amd.conf
 %config /etc/sysconfig/amd
 %config /etc/rc.d/init.d/amd
-/usr/info/*info*.gz
-/usr/lib/libamu.so
-/usr/lib/libamu.so.*
+%attr(755,root,root) %{_bindir}/pawd
+%attr(755,root,root) %{_sbindir}/*
+%attr(755,root,root) %{_libdir}/*
+%{_mandir}/man[158]/*
+%{_infodir}/*
