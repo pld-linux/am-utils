@@ -72,13 +72,13 @@ para obter uma lista dos diretórios exportados por aquela máquina
 %endif
 
 %build
-CFLAGS="%{rpmcflags}" 
+CFLAGS="%{rpmcflags}"
 %configure2_13 \
 	--prefix=%{_prefix} \
 	--enable-shared \
 	--sysconfdir=%{_sysconfdir} \
 	--enable-libs=-lnsl
-	
+
 # fun with autoconf
 touch `find -name Makefile.in`
 %{__make}
