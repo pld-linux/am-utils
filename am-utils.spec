@@ -16,7 +16,7 @@ Requires:	portmap
 Prereq:		/sbin/chkconfig
 Prereq:	        /usr/sbin/fix-info-dir
 Obsoletes:	amd
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Am-utils includes an updated version of Amd, the popular BSD
