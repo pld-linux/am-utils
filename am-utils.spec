@@ -52,7 +52,7 @@ make
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sysconfdir}/{sysconfig,rc.d/init.d}
 
-make install prefix=$RPM_BUILD_ROOT%{_prefix} sysconfdir=`pwd`%{_sysconfdir}
+%{__make} install prefix=$RPM_BUILD_ROOT%{_prefix} sysconfdir=`pwd`%{_sysconfdir}
 install $RPM_SOURCE_DIR/am-utils.conf $RPM_BUILD_ROOT%{_sysconfdir}/amd.conf
 install $RPM_SOURCE_DIR/am-utils.sysconf $RPM_BUILD_ROOT/etc/sysconfig/amd
 install $RPM_SOURCE_DIR/am-utils.init $RPM_BUILD_ROOT/etc/rc.d/init.d/amd
