@@ -46,7 +46,7 @@ CFLAGS="$RPM_OPT_FLAGS" ./configure \
 	
 # fun with autoconf
 touch `find -name Makefile.in`
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
