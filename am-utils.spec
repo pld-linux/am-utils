@@ -73,11 +73,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/ldconfig
-NAME=amd; %chkconfig_post
+NAME=amd; %chkconfig_add
 %fix_info_dir
 
 %preun
-NAME=amd; %chkconfig_preun
+NAME=amd; %chkconfig_del
 
 %postun
 %fix_info_dir
