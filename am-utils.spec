@@ -14,8 +14,9 @@ Source3:	%{name}.sysconf
 Patch0:		%{name}-6.0a16-linux.patch
 Patch1:		%{name}-6.0a16-alpha.patch
 Patch2:		%{name}-6.0a16-glibc21.patch
-Requires:	portmap
+BuildRequires:	autoconf
 Prereq:		/sbin/chkconfig
+Requires:	portmap
 Obsoletes:	amd
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -30,16 +31,27 @@ CD-ROMS and local drives.
 You should install am-utils if you need a program for automatically
 mounting and unmounting filesystems.
 
+%description -l pl
+Pakiet am-utils zawiera uaktualnion± wersjê amd, popularnego
+automountera z BSD. Automounter to program zarz±dzaj±cy montowaniem
+systemów plików. Systemy plików s± montowane przy pierwszym u¿yciu
+przez u¿ytkownika, a odmontowywane po pewnym czasie nieu¿ywania. amd
+obs³uguje wiele systemów plików, w tym NFS, UFS, CD-ROM oraz lokalne
+urz±dzenia.
+
 %prep
 %setup -q
-%patch2 -p1 -b .glibc21
-%patch0 -p1 -b .lnx
+%patch2 -p1
+%patch0 -p1
 %ifnarch i386
-%patch1 -p1 -b .noauto
+%patch1 -p1
 %endif
 
 %build
-cd aux ; autoconf ; mv -f configure .. ; cd ..
+(cd aux
+autoconf
+mv -f configure ..
+)
 CFLAGS="%{rpmcflags}" ./configure \
 	--prefix=%{_prefix} \
 	--enable-shared \
@@ -79,7 +91,7 @@ rm -rf $RPM_BUILD_ROOT
 %postun
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 /sbin/ldconfig
-if [ $1 = 0 ]; then
+if [ "$1" = "0" ]; then
     /sbin/chkconfig --del amd
 fi
 
