@@ -19,10 +19,10 @@ case "$1" in
 	if [ ! -f /var/lock/subsys/amd ]; then
 		msg_starting amd
 		daemon /usr/sbin/amd -a $ADIR -l syslog $AMDOPTS -c 1000 $MOUNTPTS
-		touch /var/lock/subsys/amd
+		RETVAL=$?
+		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/amd
 	else
 		msg_already_running Amavisd
-		exit 1
 	fi
 	;;
   stop)
@@ -32,22 +32,30 @@ case "$1" in
 		rm -f /var/lock/subsys/amd
 	else
 		msg_not_running Amavisd
-		exit 1
 	fi
 	;;
   status)
 	status amd
+	exit $?
 	;;
   restart)
 	$0 stop
 	$0 start
+	exit $?
 	;;
-  reload)
-	killall -HUP amd
+  reload|force-reload)
+	if [ -f /var/lock/subsys/amd ]; then
+		msg_reloading amd
+		killproc -HUP amd
+		RETVAL=$?
+	else
+		msg_not_running Amavisd >&2
+		RETVAL=7
+	fi
 	;;
   *)
-	msg_usage "$0 {start|stop|restart|reload|status}"
-	exit 1
+	msg_usage "$0 {start|stop|restart|reload|force-reload|status}"
+	exit 3
 esac
 
-exit 0
+exit $RETVAL
