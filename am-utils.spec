@@ -14,7 +14,6 @@ Patch1:		am-utils-6.0a16-alpha.patch
 Patch2:		am-utils-6.0a16-glibc21.patch
 Requires:	portmap
 Prereq:		/sbin/chkconfig
-Prereq:	        /usr/sbin/fix-info-dir
 Obsoletes:	amd
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -77,10 +76,10 @@ rm -rf $RPM_BUILD_ROOT
 %post
 /sbin/ldconfig
 /sbin/chkconfig --add amd
-/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+[ -x /usr/sbin/fix-info-dir ] && /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %postun
-/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+[ -x /usr/sbin/fix-info-dir ] && /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 /sbin/ldconfig
 if [ $1 = 0 ]; then
     /sbin/chkconfig --del amd
