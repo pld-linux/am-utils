@@ -2,10 +2,10 @@ Summary:	Automount utilities including an updated version of Amd.
 Name:		am-utils
 Version:	6.0.3
 Release:	1
-Copyright:	BSD
+License:	BSD
 Group:		Daemons
 Group(pl):	Serwery
-Source:		ftp://shekel.mcl.cs.columbia.edu/pub/am-utils/%{name}-%{version}.tar.gz
+Source0:	ftp://shekel.mcl.cs.columbia.edu/pub/am-utils/%{name}-%{version}.tar.gz
 Source1:	am-utils.init
 Source2:	am-utils.conf
 Source3:	am-utils.sysconf
@@ -19,11 +19,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Am-utils includes an updated version of Amd, the popular BSD
-automounter.  An automounter is a program which maintains a cache of
-mounted filesystems.  Filesystems are mounted when they are first
-referenced by the user and unmounted after a certain period of inactivity.
-Amd supports a variety of filesystems, including NFS, UFS, CD-ROMS and
-local drives.  
+automounter. An automounter is a program which maintains a cache of
+mounted filesystems. Filesystems are mounted when they are first
+referenced by the user and unmounted after a certain period of
+inactivity. Amd supports a variety of filesystems, including NFS, UFS,
+CD-ROMS and local drives.
 
 You should install am-utils if you need a program for automatically
 mounting and unmounting filesystems.
@@ -41,7 +41,7 @@ cd aux ; autoconf ; mv -f configure .. ; cd ..
 CFLAGS="$RPM_OPT_FLAGS" ./configure \
 	--prefix=%{_prefix} \
 	--enable-shared \
-	--sysconfdir=/etc \
+	--sysconfdir=%{_sysconfdir} \
 	--enable-libs=-lnsl
 	
 # fun with autoconf
@@ -50,10 +50,10 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/etc/{sysconfig,rc.d/init.d}
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/{sysconfig,rc.d/init.d}
 
-make install prefix=$RPM_BUILD_ROOT%{_prefix} sysconfdir=`pwd`/etc
-install $RPM_SOURCE_DIR/am-utils.conf $RPM_BUILD_ROOT/etc/amd.conf
+make install prefix=$RPM_BUILD_ROOT%{_prefix} sysconfdir=`pwd`%{_sysconfdir}
+install $RPM_SOURCE_DIR/am-utils.conf $RPM_BUILD_ROOT%{_sysconfdir}/amd.conf
 install $RPM_SOURCE_DIR/am-utils.sysconf $RPM_BUILD_ROOT/etc/sysconfig/amd
 install $RPM_SOURCE_DIR/am-utils.init $RPM_BUILD_ROOT/etc/rc.d/init.d/amd
 
@@ -66,7 +66,7 @@ gzip -9nf AUTHORS TODO BUGS NEWS README* ChangeLog \
 install -d $RPM_BUILD_ROOT/.automount
 
 # get rid of some lame scripts
-file $RPM_BUILD_ROOT/usr/sbin/* | \
+file $RPM_BUILD_ROOT%{_sbindir}/* | \
 	grep -v ELF | grep -v am-eject | \
 	cut -f 1 -d':' | xargs rm -f
 
@@ -89,7 +89,7 @@ fi
 %defattr(644,root,root,755)
 %doc doc/*.ps {AUTHORS,BUGS,ChangeLog,NEWS,README*,TODO}.gz
 %dir /.automount
-%config /etc/amd.conf
+%config %{_sysconfdir}/amd.conf
 %config /etc/sysconfig/amd
 %attr(754,root,root) /etc/rc.d/init.d/amd
 %attr(755,root,root) %{_bindir}/pawd
