@@ -13,7 +13,6 @@ Source2:	%{name}.conf
 Source3:	%{name}.sysconf
 Patch0:		%{name}-6.0a16-linux.patch
 Patch1:		%{name}-6.0a16-alpha.patch
-Patch2:		%{name}-6.0a16-glibc21.patch
 URL:		http://www.am-utils.org/
 BuildRequires:	autoconf
 Prereq:		/sbin/chkconfig
