@@ -9,6 +9,7 @@ Epoch:		5
 License:	BSD
 Group:		Daemons
 Source0:	ftp://shekel.mcl.cs.columbia.edu/pub/am-utils/%{name}-%{version}.tar.gz
+# Source0-md5:	76a95778c5ad1e41699e15f1d668e89e
 Source1:	%{name}.init
 Source2:	%{name}.conf
 Source3:	%{name}.sysconf
