@@ -1,0 +1,98 @@
+--- am-utils-6.0a16/config.cache.lnx	Tue May  5 17:52:37 1998
++++ am-utils-6.0a16/config.cache	Tue May  5 17:52:19 1998
+@@ -0,0 +1,95 @@
++# This file is a shell script that caches the results of configure
++# tests run on this system so they can be shared between configure
++# scripts and configure runs.  It is not useful on other systems.
++# If it contains results you don't want to keep, you may remove or edit it.
++#
++# By default, configure uses ./config.cache as the cache file,
++# creating it if it does not exist already.  You can give configure
++# the --cache-file=FILE option to use a different cache file; that is
++# what configure does when it calls configure scripts in
++# subdirectories, so they share the cache.
++# Giving --cache-file=/dev/null disables caching, for debugging configure.
++# config.status only pays attention to the cache file if you give it the
++# --recheck option to rerun configure.
++
++ac_cv_fs_autofs=${ac_cv_fs_autofs='yes'}
++ac_cv_fs_cache=${ac_cv_fs_cache='no'}
++ac_cv_fs_cdfs=${ac_cv_fs_cdfs='yes'}
++ac_cv_fs_efs=${ac_cv_fs_efs='no'}
++ac_cv_fs_header_autofs=${ac_cv_fs_header_autofs='no'}
++ac_cv_fs_header_cachefs=${ac_cv_fs_header_cachefs='no'}
++ac_cv_fs_header_cdfs=${ac_cv_fs_header_cdfs='no'}
++ac_cv_fs_header_tmpfs=${ac_cv_fs_header_tmpfs='no'}
++ac_cv_fs_lofs=${ac_cv_fs_lofs='no'}
++ac_cv_fs_mfs=${ac_cv_fs_mfs='no'}
++ac_cv_fs_nfs=${ac_cv_fs_nfs='yes'}
++ac_cv_fs_nfs3=${ac_cv_fs_nfs3='no'}
++ac_cv_fs_nullfs=${ac_cv_fs_nullfs='no'}
++ac_cv_fs_pcfs=${ac_cv_fs_pcfs='yes'}
++ac_cv_fs_tfs=${ac_cv_fs_tfs='no'}
++ac_cv_fs_tmpfs=${ac_cv_fs_tmpfs='no'}
++ac_cv_fs_ufs=${ac_cv_fs_ufs='yes'}
++ac_cv_fs_umapfs=${ac_cv_fs_umapfs='no'}
++ac_cv_fs_unionfs=${ac_cv_fs_unionfs='no'}
++ac_cv_fs_xfs=${ac_cv_fs_xfs='no'}
++ac_cv_header_linux_auto_fs_h=${ac_cv_header_linux_auto_fs_h='no'}
++ac_cv_header_linux_fs_h=${ac_cv_header_linux_fs_h='no'}
++ac_cv_header_ndbm_h=${ac_cv_header_ndbm_h='yes'}
++ac_cv_mnttab_type_afs=${ac_cv_mnttab_type_afs='notfound'}
++ac_cv_mnttab_type_autofs=${ac_cv_mnttab_type_autofs='"autofs"'}
++ac_cv_mnttab_type_cachefs=${ac_cv_mnttab_type_cachefs='notfound'}
++ac_cv_mnttab_type_cdfs=${ac_cv_mnttab_type_cdfs='"isofs"'}
++ac_cv_mnttab_type_efs=${ac_cv_mnttab_type_efs='notfound'}
++ac_cv_mnttab_type_lfs=${ac_cv_mnttab_type_lfs='notfound'}
++ac_cv_mnttab_type_lofs=${ac_cv_mnttab_type_lofs='notfound'}
++ac_cv_mnttab_type_mfs=${ac_cv_mnttab_type_mfs='notfound'}
++ac_cv_mnttab_type_nfs=${ac_cv_mnttab_type_nfs='"nfs"'}
++ac_cv_mnttab_type_nfs3=${ac_cv_mnttab_type_nfs3='notfound'}
++ac_cv_mnttab_type_nullfs=${ac_cv_mnttab_type_nullfs='notfound'}
++ac_cv_mnttab_type_pcfs=${ac_cv_mnttab_type_pcfs='"vfat"'}
++ac_cv_mnttab_type_tfs=${ac_cv_mnttab_type_tfs='notfound'}
++ac_cv_mnttab_type_tmpfs=${ac_cv_mnttab_type_tmpfs='notfound'}
++ac_cv_mnttab_type_ufs=${ac_cv_mnttab_type_ufs='"ext2"'}
++ac_cv_mnttab_type_umapfs=${ac_cv_mnttab_type_umapfs='notfound'}
++ac_cv_mnttab_type_unionfs=${ac_cv_mnttab_type_unionfs='notfound'}
++ac_cv_mnttab_type_xfs=${ac_cv_mnttab_type_xfs='notfound'}
++ac_cv_mount_trap=${ac_cv_mount_trap='linux'}
++ac_cv_mount_type_afs=${ac_cv_mount_type_afs='notfound'}
++ac_cv_mount_type_autofs=${ac_cv_mount_type_autofs='"autofs"'}
++ac_cv_mount_type_cachefs=${ac_cv_mount_type_cachefs='notfound'}
++ac_cv_mount_type_cdfs=${ac_cv_mount_type_cdfs='"isofs"'}
++ac_cv_mount_type_efs=${ac_cv_mount_type_efs='notfound'}
++ac_cv_mount_type_ignore=${ac_cv_mount_type_ignore='MNTTYPE_IGNORE'}
++ac_cv_mount_type_lfs=${ac_cv_mount_type_lfs='notfound'}
++ac_cv_mount_type_lofs=${ac_cv_mount_type_lofs='notfound'}
++ac_cv_mount_type_mfs=${ac_cv_mount_type_mfs='notfound'}
++ac_cv_mount_type_nfs=${ac_cv_mount_type_nfs='MNTTYPE_NFS'}
++ac_cv_mount_type_nfs3=${ac_cv_mount_type_nfs3='notfound'}
++ac_cv_mount_type_nullfs=${ac_cv_mount_type_nullfs='notfound'}
++ac_cv_mount_type_pcfs=${ac_cv_mount_type_pcfs='"vfat"'}
++ac_cv_mount_type_tfs=${ac_cv_mount_type_tfs='notfound'}
++ac_cv_mount_type_tmpfs=${ac_cv_mount_type_tmpfs='notfound'}
++ac_cv_mount_type_ufs=${ac_cv_mount_type_ufs='"ext2"'}
++ac_cv_mount_type_umapfs=${ac_cv_mount_type_umapfs='notfound'}
++ac_cv_mount_type_unionfs=${ac_cv_mount_type_unionfs='notfound'}
++ac_cv_mount_type_xfs=${ac_cv_mount_type_xfs='notfound'}
++ac_cv_type_autofs_args=${ac_cv_type_autofs_args='notfound'}
++ac_cv_type_cachefs_args=${ac_cv_type_cachefs_args='notfound'}
++ac_cv_type_cdfs_args=${ac_cv_type_cdfs_args='notfound'}
++ac_cv_type_efs_args=${ac_cv_type_efs_args='notfound'}
++ac_cv_type_getgroups=${ac_cv_type_getgroups='gid_t'}
++ac_cv_type_lofs_args=${ac_cv_type_lofs_args='notfound'}
++ac_cv_type_mfs_args=${ac_cv_type_mfs_args='notfound'}
++ac_cv_type_mode_t=${ac_cv_type_mode_t='yes'}
++ac_cv_type_pcfs_args=${ac_cv_type_pcfs_args='notfound'}
++ac_cv_type_pid_t=${ac_cv_type_pid_t='yes'}
++ac_cv_type_rfs_args=${ac_cv_type_rfs_args='notfound'}
++ac_cv_type_signal=${ac_cv_type_signal='void'}
++ac_cv_type_size_t=${ac_cv_type_size_t='yes'}
++ac_cv_type_svc_in_arg=${ac_cv_type_svc_in_arg='caddr_t'}
++ac_cv_type_time_t=${ac_cv_type_time_t='yes'}
++ac_cv_type_tmpfs_args=${ac_cv_type_tmpfs_args='notfound'}
++ac_cv_type_ufs_args=${ac_cv_type_ufs_args='notfound'}
++ac_cv_type_uid_t=${ac_cv_type_uid_t='yes'}
++ac_cv_type_xdrproc_t=${ac_cv_type_xdrproc_t='yes'}
++ac_cv_type_xfs_args=${ac_cv_type_xfs_args='notfound'}

@@ -1,0 +1,38 @@
+--- am-utils-6.0a16/config.cache.noauto	Thu Jan 21 12:00:26 1999
++++ am-utils-6.0a16/config.cache	Thu Jan 21 12:05:55 1999
+@@ -12,11 +12,9 @@
+ # config.status only pays attention to the cache file if you give it the
+ # --recheck option to rerun configure.
+ 
+-ac_cv_fs_autofs=${ac_cv_fs_autofs='yes'}
+ ac_cv_fs_cache=${ac_cv_fs_cache='no'}
+ ac_cv_fs_cdfs=${ac_cv_fs_cdfs='yes'}
+ ac_cv_fs_efs=${ac_cv_fs_efs='no'}
+-ac_cv_fs_header_autofs=${ac_cv_fs_header_autofs='no'}
+ ac_cv_fs_header_cachefs=${ac_cv_fs_header_cachefs='no'}
+ ac_cv_fs_header_cdfs=${ac_cv_fs_header_cdfs='no'}
+ ac_cv_fs_header_tmpfs=${ac_cv_fs_header_tmpfs='no'}
+@@ -36,7 +34,6 @@
+ ac_cv_header_linux_fs_h=${ac_cv_header_linux_fs_h='no'}
+ ac_cv_header_ndbm_h=${ac_cv_header_ndbm_h='yes'}
+ ac_cv_mnttab_type_afs=${ac_cv_mnttab_type_afs='notfound'}
+-ac_cv_mnttab_type_autofs=${ac_cv_mnttab_type_autofs='"autofs"'}
+ ac_cv_mnttab_type_cachefs=${ac_cv_mnttab_type_cachefs='notfound'}
+ ac_cv_mnttab_type_cdfs=${ac_cv_mnttab_type_cdfs='"isofs"'}
+ ac_cv_mnttab_type_efs=${ac_cv_mnttab_type_efs='notfound'}
+@@ -55,7 +52,6 @@
+ ac_cv_mnttab_type_xfs=${ac_cv_mnttab_type_xfs='notfound'}
+ ac_cv_mount_trap=${ac_cv_mount_trap='linux'}
+ ac_cv_mount_type_afs=${ac_cv_mount_type_afs='notfound'}
+-ac_cv_mount_type_autofs=${ac_cv_mount_type_autofs='"autofs"'}
+ ac_cv_mount_type_cachefs=${ac_cv_mount_type_cachefs='notfound'}
+ ac_cv_mount_type_cdfs=${ac_cv_mount_type_cdfs='"isofs"'}
+ ac_cv_mount_type_efs=${ac_cv_mount_type_efs='notfound'}
+@@ -73,7 +69,6 @@
+ ac_cv_mount_type_umapfs=${ac_cv_mount_type_umapfs='notfound'}
+ ac_cv_mount_type_unionfs=${ac_cv_mount_type_unionfs='notfound'}
+ ac_cv_mount_type_xfs=${ac_cv_mount_type_xfs='notfound'}
+-ac_cv_type_autofs_args=${ac_cv_type_autofs_args='notfound'}
+ ac_cv_type_cachefs_args=${ac_cv_type_cachefs_args='notfound'}
+ ac_cv_type_cdfs_args=${ac_cv_type_cdfs_args='notfound'}
+ ac_cv_type_efs_args=${ac_cv_type_efs_args='notfound'}
