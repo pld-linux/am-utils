@@ -15,14 +15,25 @@
 # See how we were called.
 case "$1" in
   start)
-	msg_starting amd
-	daemon /usr/sbin/amd -a $ADIR -l syslog $AMDOPTS -c 1000 $MOUNTPTS
-	touch /var/lock/subsys/amd
+	# Check if the service is already running?
+	if [ ! -f /var/lock/subsys/amd ]; then
+		msg_starting amd
+		daemon /usr/sbin/amd -a $ADIR -l syslog $AMDOPTS -c 1000 $MOUNTPTS
+		touch /var/lock/subsys/amd
+	else
+		msg_already_running Amavisd
+		exit 1
+	fi
 	;;
   stop)
-	msg_stopping amd
-	killproc amd
-	rm -f /var/lock/subsys/amd
+	if [ -f /var/lock/subsys/amd ]; then
+		msg_stopping amd
+		killproc amd
+		rm -f /var/lock/subsys/amd
+	else
+		msg_not_running Amavisd
+		exit 1
+	fi
 	;;
   status)
 	status amd
@@ -40,4 +51,3 @@ case "$1" in
 esac
 
 exit 0
-
