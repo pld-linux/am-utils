@@ -1,5 +1,7 @@
 Summary:	Automount utilities including an updated version of Amd
+Summary(es):	Utilitarios del automount - incluye el servidor automount NFS
 Summary(pl):	Narzêdzia do automatycznego montowania systemów plików
+Summary(pt_BR):	Utilitários do automount - inclui o servidor automount NFS
 Name:		am-utils
 Version:	6.0.7
 Release:	2
@@ -32,6 +34,17 @@ CD-ROMS and local drives.
 You should install am-utils if you need a program for automatically
 mounting and unmounting filesystems.
 
+%description -l es
+am-utils es la "próxima generación" del popular automounter BSD amd.
+Incluye muchas adiciones: actualizaciones, portes, programas,
+características, correcciones de problemas, etc. AMD es el servidor
+automount de Berkeley. Tiene la capacidad de automáticamente montar
+sistemas de archivos de todos los tipos, incluyendo sistemas de
+archivos NFS, CD-ROMs y accionadores locales y de desmontarlos cuando
+no estén en uso. La configuración por defecto permite que se haga un
+'cd /net/[máquina]' para obtener una lista de los directorios
+exportados por aquella máquina
+
 %description -l pl
 Pakiet am-utils zawiera uaktualnion± wersjê amd, popularnego
 automountera z BSD. Automounter to program zarz±dzaj±cy montowaniem
@@ -39,6 +52,19 @@ systemów plików. Systemy plików s± montowane przy pierwszym u¿yciu
 przez u¿ytkownika, a odmontowywane po pewnym czasie nieu¿ywania. amd
 obs³uguje wiele systemów plików, w tym NFS, UFS, CD-ROM oraz lokalne
 urz±dzenia.
+
+%description -l pt_BR
+O am-utils é a "próxima geração" do popular automounter BSD amd.
+Inclui muitas adições: atualizações, portes, programas,
+características, correções de problemas, etc.
+
+O AMD é o servidor automount de Berkeley. Tem a capacidade de
+automaticamente montar sistemas de arquivos de todos os tipos,
+incluindo sistemas de arquivos NFS, CD-ROMs e acionadores locais e de
+desmontá-los quando não estiverem mais sendo usados.
+
+A configuração default permite que seja feito um 'cd /net/[máquina]'
+para obter uma lista dos diretórios exportados por aquela máquina
 
 %prep
 %setup -q
