@@ -8,8 +8,6 @@ Release:	2
 Epoch:		5
 License:	BSD
 Group:		Daemons
-Group(de):	Server
-Group(pl):	Serwery
 Source0:	ftp://shekel.mcl.cs.columbia.edu/pub/am-utils/%{name}-%{version}.tar.gz
 Source1:	%{name}.init
 Source2:	%{name}.conf
