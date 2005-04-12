@@ -3,13 +3,13 @@ Summary(es):	Utilitarios del automount - incluye el servidor automount NFS
 Summary(pl):	Narzêdzia do automatycznego montowania systemów plików
 Summary(pt_BR):	Utilitários do automount - inclui o servidor automount NFS
 Name:		am-utils
-Version:	6.0.7
-Release:	3
+Version:	6.0.10
+Release:	1
 Epoch:		5
 License:	BSD
 Group:		Daemons
-Source0:	ftp://shekel.mcl.cs.columbia.edu/pub/am-utils/%{name}-%{version}.tar.gz
-# Source0-md5:	76a95778c5ad1e41699e15f1d668e89e
+Source0:	ftp://ftp.am-utils.org/pub/am-utils/%{name}-%{version}.tar.gz
+# Source0-md5:	ec26df84e2ef9d55c9e6ea3c648788d4
 Source1:	%{name}.init
 Source2:	%{name}.conf
 Source3:	%{name}.sysconf
