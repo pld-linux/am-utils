@@ -17,7 +17,7 @@ Patch0:		%{name}-6.0a16-linux.patch
 Patch1:		%{name}-6.0a16-alpha.patch
 URL:		http://www.am-utils.org/
 BuildRequires:	autoconf
-Prereq:		/sbin/chkconfig
+Requires:	/sbin/chkconfig
 Requires:	portmap
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	amd
