@@ -17,10 +17,12 @@ Patch0:		%{name}-6.0a16-linux.patch
 Patch1:		%{name}-6.0a16-alpha.patch
 URL:		http://www.am-utils.org/
 BuildRequires:	autoconf
+BuildRequires:	rpmbuild(macros) >= 1.268
+Requires(post,postun):	/sbin/ldconfig
 Requires:	/sbin/chkconfig
 Requires:	portmap
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	amd
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Am-utils includes an updated version of Amd, the popular BSD
@@ -103,17 +105,11 @@ rm -rf $RPM_BUILD_ROOT
 /sbin/ldconfig
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 /sbin/chkconfig --add amd
-if [ -f /var/lock/subsys/drbd ]; then
-	/etc/rc.d/init.d/amd restart >&2
-else
-	echo "Run \"/etc/rc.d/init.d/amd start\" to start amd service." >&2
-fi
+%service amd restart
 
 %preun
 if [ "$1" = "0" ]; then
-	if [ -f /var/lock/subsys/amd ]; then
-		/etc/rc.d/init.d/amd stop
-	fi
+	%service amd stop
 	/sbin/chkconfig --del amd
 fi
 
