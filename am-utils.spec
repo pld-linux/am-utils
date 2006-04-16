@@ -19,8 +19,9 @@ URL:		http://www.am-utils.org/
 BuildRequires:	autoconf
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(post,postun):	/sbin/ldconfig
-Requires:	/sbin/chkconfig
+Requires(post,preun):	/sbin/chkconfig
 Requires:	portmap
+Requires:	rc-scripts
 Obsoletes:	amd
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
