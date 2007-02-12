@@ -1,7 +1,7 @@
 Summary:	Automount utilities including an updated version of Amd
-Summary(es.UTF-8):   Utilitarios del automount - incluye el servidor automount NFS
-Summary(pl.UTF-8):   Narzędzia do automatycznego montowania systemów plików
-Summary(pt_BR.UTF-8):   Utilitários do automount - inclui o servidor automount NFS
+Summary(es.UTF-8):	Utilitarios del automount - incluye el servidor automount NFS
+Summary(pl.UTF-8):	Narzędzia do automatycznego montowania systemów plików
+Summary(pt_BR.UTF-8):	Utilitários do automount - inclui o servidor automount NFS
 Name:		am-utils
 Version:	6.0.10
 Release:	1
