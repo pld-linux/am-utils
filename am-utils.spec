@@ -1,7 +1,7 @@
 Summary:	Automount utilities including an updated version of Amd
-Summary(es):	Utilitarios del automount - incluye el servidor automount NFS
-Summary(pl):	Narzêdzia do automatycznego montowania systemów plików
-Summary(pt_BR):	Utilitários do automount - inclui o servidor automount NFS
+Summary(es.UTF-8):   Utilitarios del automount - incluye el servidor automount NFS
+Summary(pl.UTF-8):   NarzÄ™dzia do automatycznego montowania systemÃ³w plikÃ³w
+Summary(pt_BR.UTF-8):   UtilitÃ¡rios do automount - inclui o servidor automount NFS
 Name:		am-utils
 Version:	6.0.10
 Release:	1
@@ -36,37 +36,37 @@ CD-ROMS and local drives.
 You should install am-utils if you need a program for automatically
 mounting and unmounting filesystems.
 
-%description -l es
-Am-utils es la "próxima generación" del popular automounter BSD Amd.
+%description -l es.UTF-8
+Am-utils es la "prÃ³xima generaciÃ³n" del popular automounter BSD Amd.
 Incluye muchas adiciones: actualizaciones, portes, programas,
-características, correcciones de problemas, etc. AMD es el servidor
-automount de Berkeley. Tiene la capacidad de automáticamente montar
+caracterÃ­sticas, correcciones de problemas, etc. AMD es el servidor
+automount de Berkeley. Tiene la capacidad de automÃ¡ticamente montar
 sistemas de archivos de todos los tipos, incluyendo sistemas de
 archivos NFS, CD-ROMs y accionadores locales y de desmontarlos cuando
-no estén en uso. La configuración por defecto permite que se haga un
-'cd /net/[máquina]' para obtener una lista de los directorios
-exportados por aquella máquina
+no estÃ©n en uso. La configuraciÃ³n por defecto permite que se haga un
+'cd /net/[mÃ¡quina]' para obtener una lista de los directorios
+exportados por aquella mÃ¡quina
 
-%description -l pl
-Pakiet am-utils zawiera uaktualnion± wersjê amd, popularnego
-automountera z BSD. Automounter to program zarz±dzaj±cy montowaniem
-systemów plików. Systemy plików s± montowane przy pierwszym u¿yciu
-przez u¿ytkownika, a odmontowywane po pewnym czasie nieu¿ywania. amd
-obs³uguje wiele systemów plików, w tym NFS, UFS, CD-ROM oraz lokalne
-urz±dzenia.
+%description -l pl.UTF-8
+Pakiet am-utils zawiera uaktualnionÄ… wersjÄ™ amd, popularnego
+automountera z BSD. Automounter to program zarzÄ…dzajÄ…cy montowaniem
+systemÃ³w plikÃ³w. Systemy plikÃ³w sÄ… montowane przy pierwszym uÅ¼yciu
+przez uÅ¼ytkownika, a odmontowywane po pewnym czasie nieuÅ¼ywania. amd
+obsÅ‚uguje wiele systemÃ³w plikÃ³w, w tym NFS, UFS, CD-ROM oraz lokalne
+urzÄ…dzenia.
 
-%description -l pt_BR
-O am-utils é a "próxima geração" do popular automounter BSD amd.
-Inclui muitas adições: atualizações, portes, programas,
-características, correções de problemas, etc.
+%description -l pt_BR.UTF-8
+O am-utils Ã© a "prÃ³xima geraÃ§Ã£o" do popular automounter BSD amd.
+Inclui muitas adiÃ§Ãµes: atualizaÃ§Ãµes, portes, programas,
+caracterÃ­sticas, correÃ§Ãµes de problemas, etc.
 
-O AMD é o servidor automount de Berkeley. Tem a capacidade de
+O AMD Ã© o servidor automount de Berkeley. Tem a capacidade de
 automaticamente montar sistemas de arquivos de todos os tipos,
 incluindo sistemas de arquivos NFS, CD-ROMs e acionadores locais e de
-desmontá-los quando não estiverem mais sendo usados.
+desmontÃ¡-los quando nÃ£o estiverem mais sendo usados.
 
-A configuração default permite que seja feito um 'cd /net/[máquina]'
-para obter uma lista dos diretórios exportados por aquela máquina
+A configuraÃ§Ã£o default permite que seja feito um 'cd /net/[mÃ¡quina]'
+para obter uma lista dos diretÃ³rios exportados por aquela mÃ¡quina
 
 %prep
 %setup -q
