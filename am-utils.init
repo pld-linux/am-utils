@@ -12,6 +12,10 @@
 # Demon specified configuration.
 . /etc/sysconfig/amd
 
+if [ "$1" != "stop" ]; then
+	check_portmapper || { nls "Error: portmap isn't running" && exit 0; }
+fi
+
 RETVAL=0
 # See how we were called.
 case "$1" in
