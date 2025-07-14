@@ -70,9 +70,9 @@ para obter uma lista dos diretórios exportados por aquela máquina
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 %ifnarch i386
-%patch1 -p1
+%patch -P1 -p1
 %endif
 
 %build
